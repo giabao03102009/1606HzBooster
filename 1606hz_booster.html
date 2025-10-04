@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>1606HzPhHgGiaBao ⚡</title>
+<style>
+  body {
+    background: radial-gradient(circle at center, #1a0000, #000);
+    color: #ff2b2b;
+    font-family: 'Courier New', monospace;
+    text-align: center;
+    padding: 40px 10px;
+  }
+  h1 {
+    font-size: 2em;
+    text-shadow: 0 0 15px #ff0000, 0 0 30px #ff4444;
+    animation: flicker 1.5s infinite alternate;
+  }
+  @keyframes flicker {
+    from { opacity: 0.9; }
+    to { opacity: 1; }
+  }
+
+  .progress {
+    width: 80%;
+    background: #220000;
+    height: 25px;
+    border-radius: 20px;
+    margin: 40px auto;
+    box-shadow: 0 0 15px #ff2b2b inset;
+  }
+  .bar {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #ff2b2b, #ff9900);
+    border-radius: 20px;
+    box-shadow: 0 0 20px #ff0000;
+    transition: width 0.3s ease;
+  }
+
+  .btn {
+    display: inline-block;
+    margin: 15px;
+    padding: 14px 28px;
+    border: 1px solid #ff4d4d;
+    border-radius: 8px;
+    color: #fff;
+    background: rgba(50, 0, 0, 0.4);
+    box-shadow: 0 0 10px #ff0000;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .btn:hover {
+    background: #ff1a1a;
+    box-shadow: 0 0 20px #ff4d4d;
+    transform: scale(1.05);
+  }
+  .btn.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  .log {
+    margin-top: 40px;
+    font-size: 14px;
+    color: #ffaaaa;
+    text-align: left;
+    width: 85%;
+    margin-left: auto;
+    margin-right: auto;
+    background: rgba(50, 0, 0, 0.3);
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px #ff0000 inset;
+    height: 140px;
+    overflow-y: auto;
+  }
+</style>
+</head>
+<body>
+  <h1>⚡ 1606HzPhHgGiaBao System</h1>
+  <div class="progress"><div class="bar" id="bar"></div></div>
+  <div id="percent">0%</div>
+
+  <div>
+    <div class="btn" onclick="activate('Tăng Nhạy', this)">🎯 Bật Tăng Nhạy</div>
+    <div class="btn" onclick="activate('Chống Lệch Tâm', this)">🧭 Chống Lệch Tâm</div>
+    <div class="btn" onclick="activate('Tối Ưu FPS', this)">⚙️ Tối Ưu FPS</div>
+    <div class="btn" onclick="activate('Kích Hoạt 1606Hz', this)">🚀 Kích Hoạt 1606Hz</div>
+  </div>
+
+  <div class="log" id="log"></div>
+
+<script>
+  let bar = document.getElementById('bar');
+  let percent = document.getElementById('percent');
+  let log = document.getElementById('log');
+  let active = false;
+
+  function logMessage(msg) {
+    const time = new Date().toLocaleTimeString();
+    log.innerHTML += `[${time}] ${msg}<br>`;
+    log.scrollTop = log.scrollHeight;
+  }
+
+  function activate(feature, btn) {
+    if (active) {
+      logMessage("⚠️ Vui lòng chờ chức năng hiện tại hoàn tất trước khi dùng chức năng khác!");
+      return;
+    }
+    active = true;
+    disableButtons(true);
+    logMessage(`🔧 Đang xử lý: ${feature}...`);
+    bar.style.width = "0%";
+    percent.innerText = "0%";
+
+    let load = 0;
+    let loadingInterval = setInterval(() => {
+      if (load < 100) {
+        load++;
+        bar.style.width = load + "%";
+        percent.innerText = load + "%";
+      } else {
+        clearInterval(loadingInterval);
+        percent.innerText = "✅ Hoàn tất";
+        logMessage(`✅ ${feature} đã được kích hoạt thành công!`);
+        active = false;
+        disableButtons(false);
+      }
+    }, 40);
+  }
+
+  function disableButtons(state) {
+    const buttons = document.querySelectorAll('.btn');
+    buttons.forEach(btn => {
+      if (state) {
+        btn.classList.add('disabled');
+      } else {
+        btn.classList.remove('disabled');
+      }
+    });
+  }
+
+  window.onload = () => {
+    logMessage("🛰️ Hệ thống khởi động thành công - sẵn sàng kích hoạt các chức năng.");
+  };
+</script>
+</body>
+</html>
